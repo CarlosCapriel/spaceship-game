@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/asteroid2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/asteroid.png" type="Texture" id=2]
+[ext_resource path="res://Roca.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "chiquito",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "grande",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 34.0147
+
+[node name="Roca" type="RigidBody2D"]
+position = Vector2( 200, 99 )
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+velocidad_min = 150
+velocidad_max = 250
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1, 0 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "grande"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 0 )
+shape = SubResource( 2 )
+
+[node name="Visibilidad" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="Visibilidad" to="." method="_on_Visibilidad_screen_exited"]
