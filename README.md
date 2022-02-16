@@ -15,4 +15,4 @@ Language:
 
 GDScript :computer:
 
-Make with :heart: by CARLO
+Made with :heart: by CARLO
